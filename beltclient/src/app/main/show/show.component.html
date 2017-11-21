@@ -1,0 +1,24 @@
+<h2> Your Appointment History </h2>
+
+<table>
+	<thead>
+		<tr>
+			<th> Date </th>
+			<th> Time </th>
+			<th> Patient </th>
+			<th> Complaint </th>
+			<th> Options </th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of items">
+			<td> {{ item.datetime | date }}  </td>
+			<td> {{ item.datetime | date: 'h:mm' }}  </td>
+			<td> {{ item.patient }} </td>
+			<td> {{ item.complaint }} </td>
+			<td *ngIf="(item.patient === currentUser.name)">
+				<button (click)="deleteItem($event, item._id)">Delete</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

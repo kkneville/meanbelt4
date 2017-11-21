@@ -1,0 +1,26 @@
+
+<form (submit)="onSubmit($event)" #formData='ngForm'>
+
+	 <p><input 
+	 	type="datetime-local" 
+	 	name="datetime" 
+	 	[(ngModel)]="item.datetime"
+	 	#datetime='ngModel'
+	 	min='11-20-2017T14:20:00'
+  		required />
+  		<span *ngIf="datetime.errors">Date and time are required.</span>
+  	</p>
+
+	<p> <input 
+				type="text" 
+				name="complaint"
+				required
+				minlength="10"
+				[(ngModel)]="item.complaint"
+				#complaint="ngModel"
+				>
+				<span *ngIf="complaint.errors">Complaint is required, must be 10 chars long</span>
+	</p>	
+	<p><input *ngIf="formData.valid" type="submit" value="Set Appointment"></p>
+
+</form>
